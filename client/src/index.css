@@ -1,0 +1,824 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #080808;
+  color: #ffffff;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 255, 255, 0.012) 2px,
+    rgba(255, 255, 255, 0.012) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 25px;
+  background:
+    linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.7) 100%),
+    url('https://i.imgur.com/gg2wQcz.jpeg') center center / cover no-repeat;
+}
+
+.login-container h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.2rem;
+  color: #e0e0e0;
+  text-transform: uppercase;
+  letter-spacing: 8px;
+  text-shadow:
+    0 0 10px #ffffff,
+    0 0 30px #ffffff88,
+    0 0 60px #ffffff33;
+  animation: flicker 4s infinite;
+}
+
+@keyframes flicker {
+  0%, 95%, 100% { opacity: 1; }
+  96% { opacity: 0.8; }
+  97% { opacity: 1; }
+  98% { opacity: 0.88; }
+}
+
+.login-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 400px;
+  background: rgba(0, 0, 0, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 40px;
+  position: relative;
+  clip-path: polygon(0 0, 93% 0, 100% 7%, 100% 100%, 7% 100%, 0 93%);
+  box-shadow:
+    0 0 30px rgba(255, 255, 255, 0.05),
+    inset 0 0 30px rgba(255, 255, 255, 0.02);
+}
+
+.login-container form::before {
+  content: '// SPARTAN AUTHENTICATION SYSTEM';
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.55rem;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 2px;
+}
+
+.login-container form::after {
+  content: 'UNSC CLASSIFIED';
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.55rem;
+  color: rgba(255, 255, 255, 0.2);
+  letter-spacing: 2px;
+}
+
+.login-container input {
+  padding: 13px 16px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-left: 3px solid rgba(255, 255, 255, 0.5);
+  color: #ffffff;
+  font-size: 1rem;
+  font-family: 'Rajdhani', sans-serif;
+  letter-spacing: 2px;
+  outline: none;
+  transition: all 0.3s;
+}
+
+.login-container input:focus {
+  border-color: #ffffff;
+  border-left-color: #ffffff;
+  box-shadow:
+    0 0 15px rgba(255, 255, 255, 0.08),
+    inset 0 0 10px rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.login-container input::placeholder {
+  color: #ffffff33;
+  letter-spacing: 2px;
+}
+
+.password-wrapper {
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-left: 3px solid rgba(255, 255, 255, 0.5);
+  transition: all 0.3s;
+}
+
+.password-wrapper:focus-within {
+  border-color: #ffffff;
+  border-left-color: #ffffff;
+  box-shadow:
+    0 0 15px rgba(255, 255, 255, 0.08),
+    inset 0 0 10px rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.password-wrapper input {
+  border: none !important;
+  flex: 1;
+  background: transparent;
+  box-shadow: none !important;
+}
+
+.password-wrapper button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0 14px;
+  font-size: 1.2rem;
+  animation: none !important;
+  clip-path: none !important;
+  color: #ffffff;
+}
+
+.login-container button[type="submit"] {
+  padding: 14px;
+  background: linear-gradient(90deg, #222222, #888888, #ffffff, #888888, #222222);
+  background-size: 200% auto;
+  color: #000000;
+  border: none;
+  font-size: 0.85rem;
+  font-weight: bold;
+  font-family: 'Orbitron', sans-serif;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  clip-path: polygon(0 0, 90% 0, 100% 35%, 100% 100%, 10% 100%, 0 65%);
+  animation: shimmer 3s linear infinite;
+  transition: box-shadow 0.3s;
+}
+
+.login-container button[type="button"] {
+  padding: 14px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-family: 'Orbitron', sans-serif;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  animation: none;
+  clip-path: none;
+  transition: all 0.3s;
+}
+
+.login-container button[type="button"]:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+.login-container button[type="submit"]:hover {
+  box-shadow:
+    0 0 20px rgba(255, 255, 255, 0.3),
+    0 0 40px rgba(255, 255, 255, 0.1);
+}
+
+.error {
+  color: #ff4444;
+  font-size: 0.9rem;
+  text-align: center;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px #ff444488;
+}
+
+.tienda-container {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.04) 0%, transparent 50%),
+    #080808;
+}
+
+.tienda-header {
+  background: linear-gradient(180deg, #141414 0%, #080808 100%);
+  padding: 25px 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  position: relative;
+}
+
+.tienda-header::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #ffffff, transparent);
+  animation: scanline 4s linear infinite;
+}
+
+@keyframes scanline {
+  0% { background-position: -100% center; }
+  100% { background-position: 200% center; }
+}
+
+.tienda-header h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.8rem;
+  color: #ffffff;
+  letter-spacing: 8px;
+  text-shadow:
+    0 0 10px #ffffff,
+    0 0 30px #ffffff55,
+    0 0 60px #ffffff22;
+  animation: flicker 5s infinite;
+}
+
+.tienda-header p {
+  color: #ffffff44;
+  margin: 8px 0 18px 0;
+  letter-spacing: 4px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.header-actions span {
+  color: #ffffffaa;
+  letter-spacing: 2px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.75rem;
+}
+
+.header-actions button {
+  padding: 9px 24px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  cursor: pointer;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  transition: all 0.3s;
+  clip-path: polygon(0 0, 88% 0, 100% 30%, 100% 100%, 12% 100%, 0 70%);
+}
+
+.header-actions button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 0 15px rgba(255, 255, 255, 0.15),
+    inset 0 0 10px rgba(255, 255, 255, 0.05);
+}
+
+.mensaje-carrito {
+  background: rgba(0, 150, 0, 0.3);
+  border: 1px solid rgba(0, 200, 0, 0.4);
+  color: #88ff88;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-align: center;
+  padding: 12px;
+  margin: 0 40px;
+  animation: flicker 0.5s ease-in-out;
+}
+
+.cascos-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 40px;
+}
+
+.casco-card {
+  background: linear-gradient(145deg, #0f0f0f, #181818);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  clip-path: polygon(0 0, 93% 0, 100% 7%, 100% 100%, 7% 100%, 0 93%);
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  position: relative;
+}
+
+.casco-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #ffffff88, transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.casco-card:hover::before {
+  opacity: 1;
+}
+
+.casco-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 15px 40px rgba(255, 255, 255, 0.08),
+    0 0 20px rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.casco-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  filter: brightness(0.9) saturate(0.8);
+  transition: filter 0.3s;
+}
+
+.casco-card:hover img {
+  filter: brightness(1.05) saturate(1);
+}
+
+.casco-card h3 {
+  font-family: 'Orbitron', sans-serif;
+  color: #e0e0e0;
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px #ffffff33;
+}
+
+.casco-card p {
+  color: #ffffff77;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.precio {
+  color: #ffffff !important;
+  font-size: 1.4rem !important;
+  font-weight: 900;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 2px;
+  text-shadow: 0 0 15px #ffffff44;
+}
+
+.conversiones {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 8px 0;
+}
+
+.conversiones p {
+  color: #ffffff33 !important;
+  font-size: 0.8rem !important;
+  letter-spacing: 2px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.btn-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.btn-editar {
+  flex: 1;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.07);
+  color: #cccccc;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  transition: all 0.3s;
+}
+
+.btn-editar:hover {
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+.btn-eliminar {
+  flex: 1;
+  padding: 10px;
+  background: rgba(150, 0, 0, 0.5);
+  color: #ff8888;
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  cursor: pointer;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  transition: all 0.3s;
+}
+
+.btn-eliminar:hover {
+  background: rgba(200, 0, 0, 0.75);
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.25);
+  color: #ffffff;
+}
+
+.btn-carrito {
+  padding: 10px;
+  background: linear-gradient(135deg, rgba(0, 100, 0, 0.6), rgba(0, 160, 0, 0.6));
+  color: #88ff88;
+  border: 1px solid rgba(0, 200, 0, 0.3);
+  cursor: pointer;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  transition: all 0.3s;
+  margin-top: auto;
+}
+
+.btn-carrito:hover {
+  background: linear-gradient(135deg, rgba(0, 130, 0, 0.8), rgba(0, 200, 0, 0.8));
+  box-shadow: 0 0 15px rgba(0, 200, 0, 0.25);
+  color: #ffffff;
+}
+
+.paginacion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 30px;
+}
+
+.paginacion button {
+  padding: 10px 30px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  cursor: pointer;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  transition: all 0.3s;
+  clip-path: polygon(0 0, 88% 0, 100% 30%, 100% 100%, 12% 100%, 0 70%);
+}
+
+.paginacion button:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+.paginacion button:disabled {
+  opacity: 0.15;
+  cursor: not-allowed;
+}
+
+.paginacion span {
+  color: #ffffff77;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 4px;
+}
+
+.especial-container {
+  padding: 20px 40px 60px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.especial-titulo {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  color: #00ccff;
+  letter-spacing: 8px;
+  text-shadow:
+    0 0 10px #00ccff,
+    0 0 30px #00ccff66;
+  animation: flicker 4s infinite;
+}
+
+.especial-card {
+  background: linear-gradient(145deg, #0f0f0f, #181818);
+  border: 1px solid rgba(0, 180, 255, 0.3);
+  border-top: 2px solid rgba(0, 180, 255, 0.7);
+  padding: 20px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  clip-path: polygon(0 0, 93% 0, 100% 7%, 100% 100%, 7% 100%, 0 93%);
+  box-shadow:
+    0 0 40px rgba(0, 180, 255, 0.1),
+    inset 0 0 20px rgba(0, 180, 255, 0.03);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.especial-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 15px 50px rgba(0, 180, 255, 0.2),
+    inset 0 0 20px rgba(0, 180, 255, 0.05);
+}
+
+.especial-card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  filter: brightness(0.9) saturate(1.1);
+  transition: filter 0.3s;
+}
+
+.especial-card:hover img {
+  filter: brightness(1.05) saturate(1.2);
+}
+
+.especial-card h3 {
+  font-family: 'Orbitron', sans-serif;
+  color: #00ccff;
+  font-size: 1.1rem;
+  letter-spacing: 3px;
+  text-align: center;
+  text-shadow: 0 0 10px #00ccff44;
+}
+
+.especial-card p {
+  color: #ffffff88;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.agregar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  gap: 25px;
+  background:
+    linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.7) 100%),
+    url('https://i.imgur.com/gg2wQcz.jpeg') center center / cover no-repeat;
+}
+
+.agregar-container h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  color: #e0e0e0;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  text-shadow:
+    0 0 10px #ffffff,
+    0 0 30px #ffffff55;
+  animation: flicker 4s infinite;
+}
+
+.agregar-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 430px;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 40px;
+  position: relative;
+  clip-path: polygon(0 0, 93% 0, 100% 7%, 100% 100%, 7% 100%, 0 93%);
+  box-shadow:
+    0 0 30px rgba(255, 255, 255, 0.04),
+    inset 0 0 30px rgba(255, 255, 255, 0.02);
+}
+
+.agregar-container form::before {
+  content: '// SPARTAN INVENTORY SYSTEM';
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.55rem;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 2px;
+}
+
+.agregar-container input {
+  padding: 13px 16px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-left: 3px solid rgba(255, 255, 255, 0.5);
+  color: #ffffff;
+  font-size: 1rem;
+  font-family: 'Rajdhani', sans-serif;
+  letter-spacing: 2px;
+  outline: none;
+  transition: all 0.3s;
+}
+
+.agregar-container input:focus {
+  border-color: #ffffff;
+  border-left-color: #ffffff;
+  box-shadow:
+    0 0 15px rgba(255, 255, 255, 0.08),
+    inset 0 0 10px rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.agregar-container input::placeholder {
+  color: #ffffff33;
+  letter-spacing: 2px;
+}
+
+.agregar-container button[type="submit"] {
+  padding: 14px;
+  background: linear-gradient(90deg, #222222, #888888, #ffffff, #888888, #222222);
+  background-size: 200% auto;
+  color: #000000;
+  border: none;
+  font-size: 0.85rem;
+  font-family: 'Orbitron', sans-serif;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  animation: shimmer 3s linear infinite;
+  transition: box-shadow 0.3s;
+  clip-path: polygon(0 0, 90% 0, 100% 35%, 100% 100%, 10% 100%, 0 65%);
+}
+
+.agregar-container button[type="submit"]:hover {
+  box-shadow:
+    0 0 20px rgba(255, 255, 255, 0.25),
+    0 0 40px rgba(255, 255, 255, 0.08);
+}
+
+.agregar-container button[type="button"] {
+  padding: 14px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-family: 'Orbitron', sans-serif;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  animation: none;
+  clip-path: none;
+  transition: all 0.3s;
+}
+
+.agregar-container button[type="button"]:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.carrito-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 500px;
+}
+
+.carrito-item {
+  background: linear-gradient(145deg, #0f0f0f, #181818);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 3px solid rgba(255, 255, 255, 0.5);
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.carrito-item h3 {
+  font-family: 'Orbitron', sans-serif;
+  color: #e0e0e0;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+}
+
+.carrito-item p {
+  color: #ffffff77;
+  font-size: 0.85rem;
+}
+
+.carrito-total {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  width: 100%;
+}
+
+.carrito-total button {
+  padding: 14px;
+  background: linear-gradient(90deg, #222222, #888888, #ffffff, #888888, #222222);
+  background-size: 200% auto;
+  color: #000000;
+  border: none;
+  font-size: 0.85rem;
+  font-family: 'Orbitron', sans-serif;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  animation: shimmer 3s linear infinite;
+  transition: box-shadow 0.3s;
+  clip-path: polygon(0 0, 90% 0, 100% 35%, 100% 100%, 10% 100%, 0 65%);
+  width: 100%;
+}
+
+.carrito-total button:hover {
+  box-shadow:
+    0 0 20px rgba(255, 255, 255, 0.25),
+    0 0 40px rgba(255, 255, 255, 0.08);
+}
+
+.carrito-lista > button[type="button"] {
+  padding: 14px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-family: 'Orbitron', sans-serif;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  animation: none;
+  clip-path: none;
+  transition: all 0.3s;
+}
+
+.carrito-lista > button[type="button"]:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.btn-eliminar-carrito {
+  padding: 7px 15px;
+  background: rgba(150, 0, 0, 0.5);
+  color: #ff8888;
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  cursor: pointer;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  transition: all 0.3s;
+  align-self: flex-end;
+  animation: none !important;
+  clip-path: none !important;
+}
+
+.btn-eliminar-carrito:hover {
+  background: rgba(200, 0, 0, 0.75);
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.25);
+  color: #ffffff;
+}
+
+.compra-exitosa {
+  font-family: 'Orbitron', sans-serif;
+  color: #00ff88;
+  font-size: 1.2rem;
+  letter-spacing: 3px;
+  text-align: center;
+  text-shadow: 0 0 20px #00ff8888;
+  animation: flicker 2s infinite;
+}
+
+.mensaje-error {
+  background: rgba(150, 0, 0, 0.3);
+  border: 1px solid rgba(255, 0, 0, 0.4);
+  color: #ff8888;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-align: center;
+  padding: 12px;
+  margin: 0 40px;
+}
