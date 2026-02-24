@@ -14,7 +14,9 @@ app.use(express.json());
 
 mongoose.connect(process.env.MONGODB_URI, {
   serverSelectionTimeoutMS: 5000,
-  family: 4
+  family: 4,
+  retryWrites: true,
+  w: 'majority'
 })
   .then(() => console.log('Conectado a MongoDB'))
   .catch((err) => console.log('Error de conexión:', err));
@@ -27,6 +29,7 @@ app.get('/', (req, res) => {
   res.send('Servidor funcionando!');
 });
 
-app.listen(process.env.PORT, () => {
-  console.log(`Servidor corriendo en el puerto ${process.env.PORT}`);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
