@@ -15,36 +15,34 @@ const Tienda = ({ carrito, setCarrito, stockTemporal, setStockTemporal }) => {
   const navigate = useNavigate();
   const limite = 8;
 
-  const obtenerCascos = async () => {
-    const res = await axios.get(`${API_URL}/api/cascos?pagina=${pagina}&limite=${limite}`);
-    setCascos(res.data.cascos);
-    setTotal(res.data.total);
-    res.data.cascos.forEach(c => {
+  useEffect(() => {
+    const obtenerCascos = async () => {
+      const res = await axios.get(`${API_URL}/api/cascos?pagina=${pagina}&limite=${limite}`);
+      setCascos(res.data.cascos);
+      setTotal(res.data.total);
+      res.data.cascos.forEach(c => {
+        setStockTemporal(prev => {
+          if (prev[c._id] === undefined) {
+            return { ...prev, [c._id]: c.stock };
+          }
+          return prev;
+        });
+      });
       setStockTemporal(prev => {
-        if (prev[c._id] === undefined) {
-          return { ...prev, [c._id]: c.stock };
+        if (prev['especial'] === undefined) {
+          return { ...prev, especial: 1 };
         }
         return prev;
       });
-    });
-    setStockTemporal(prev => {
-      if (prev['especial'] === undefined) {
-        return { ...prev, especial: 1 };
-      }
-      return prev;
-    });
-  };
-
-  const obtenerConversion = async (precio, id) => {
-    const res = await axios.get(`${API_URL}/api/moneda/${precio}`);
-    setConversiones(prev => ({ ...prev, [id]: res.data }));
-  };
-
-  useEffect(() => {
+    };
     obtenerCascos();
-  }, [pagina]); 
+  }, [pagina, setStockTemporal]);
 
   useEffect(() => {
+    const obtenerConversion = async (precio, id) => {
+      const res = await axios.get(`${API_URL}/api/moneda/${precio}`);
+      setConversiones(prev => ({ ...prev, [id]: res.data }));
+    };
     cascos.forEach(casco => obtenerConversion(casco.precio, casco._id));
     obtenerConversion(175000, 'especial');
   }, [cascos]);
@@ -53,7 +51,9 @@ const Tienda = ({ carrito, setCarrito, stockTemporal, setStockTemporal }) => {
     await axios.delete(`${API_URL}/api/cascos/${id}`, {
       headers: { authorization: token }
     });
-    obtenerCascos();
+    const res = await axios.get(`${API_URL}/api/cascos?pagina=${pagina}&limite=${limite}`);
+    setCascos(res.data.cascos);
+    setTotal(res.data.total);
   };
 
   const agregarAlCarrito = (casco) => {
