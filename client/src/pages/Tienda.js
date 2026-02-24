@@ -49,7 +49,7 @@ const Tienda = ({ carrito, setCarrito, stockTemporal, setStockTemporal }) => {
 
   const eliminarCasco = async (id) => {
     await axios.delete(`${API_URL}/api/cascos/${id}`, {
-      headers: { authorization: token }
+      headers: { Authorization: `Bearer ${token}` }
     });
     const res = await axios.get(`${API_URL}/api/cascos?pagina=${pagina}&limite=${limite}`);
     setCascos(res.data.cascos);

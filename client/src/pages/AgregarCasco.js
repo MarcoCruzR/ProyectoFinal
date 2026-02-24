@@ -24,7 +24,7 @@ const AgregarCasco = () => {
     e.preventDefault();
     try {
       await axios.post(`${API_URL}/api/cascos`, form, {
-        headers: { authorization: token }
+        headers: { Authorization: `Bearer ${token}` }
       });
       navigate('/tienda');
     } catch (err) {

@@ -33,7 +33,7 @@ const EditarCasco = ({ setStockTemporal }) => {
     e.preventDefault();
     try {
       await axios.put(`${API_URL}/api/cascos/${id}`, form, {
-        headers: { authorization: token }
+        headers: { Authorization: `Bearer ${token}` }
       });
       setStockTemporal(prev => {
         const nuevoStock = { ...prev };
