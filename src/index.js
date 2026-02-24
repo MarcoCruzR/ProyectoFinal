@@ -12,11 +12,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect(process.env.MONGODB_URI, {
+const dbURI = "mongodb+srv://marcocruzrosas1703_db_user:YAPORFAVOR123@cluster0.efhrryl.mongodb.net/proyectofinal?retryWrites=true&w=majority";
+
+mongoose.connect(dbURI, {
   serverSelectionTimeoutMS: 5000,
-  family: 4,
-  retryWrites: true,
-  w: 'majority'
+  family: 4
 })
   .then(() => console.log('Conectado a MongoDB'))
   .catch((err) => console.log('Error de conexión:', err));
