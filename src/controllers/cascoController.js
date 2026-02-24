@@ -27,7 +27,12 @@ const obtenerCasco = async (req, res) => {
 
 const crearCasco = async (req, res) => {
   try {
-    const casco = new Casco(req.body);
+    const body = {
+      ...req.body,
+      precio: Number(req.body.precio),
+      stock: Number(req.body.stock)
+    };
+    const casco = new Casco(body);
     await casco.save();
     res.status(201).json({ mensaje: 'Casco creado exitosamente', casco });
   } catch (error) {
@@ -37,7 +42,12 @@ const crearCasco = async (req, res) => {
 
 const actualizarCasco = async (req, res) => {
   try {
-    const casco = await Casco.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const body = {
+      ...req.body,
+      precio: Number(req.body.precio),
+      stock: Number(req.body.stock)
+    };
+    const casco = await Casco.findByIdAndUpdate(req.params.id, body, { returnDocument: 'after' });
     if (!casco) return res.status(404).json({ mensaje: 'Casco no encontrado' });
     res.json({ mensaje: 'Casco actualizado exitosamente', casco });
   } catch (error) {

@@ -9,11 +9,11 @@ const validarCasco = (req, res, next) => {
     return res.status(400).json({ error: 'La descripcion es obligatoria' });
   }
 
-  if (!precio || isNaN(precio) || precio <= 0) {
+  if (!precio || isNaN(precio) || Number(precio) <= 0) {
     return res.status(400).json({ error: 'El precio debe ser un número mayor a 0' });
   }
 
-  if (stock === undefined || isNaN(stock) || stock < 0) {
+  if (stock === undefined || isNaN(stock) || Number(stock) < 0) {
     return res.status(400).json({ error: 'El stock debe ser un número mayor o igual a 0' });
   }
 
