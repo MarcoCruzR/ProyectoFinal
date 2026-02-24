@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3000';
+
 const Tienda = ({ carrito, setCarrito, stockTemporal, setStockTemporal }) => {
   const [cascos, setCascos] = useState([]);
   const [pagina, setPagina] = useState(1);
@@ -14,7 +16,7 @@ const Tienda = ({ carrito, setCarrito, stockTemporal, setStockTemporal }) => {
   const limite = 8;
 
   const obtenerCascos = async () => {
-    const res = await axios.get(`http://localhost:3000/api/cascos?pagina=${pagina}&limite=${limite}`);
+    const res = await axios.get(`${API_URL}/api/cascos?pagina=${pagina}&limite=${limite}`);
     setCascos(res.data.cascos);
     setTotal(res.data.total);
     res.data.cascos.forEach(c => {
@@ -34,13 +36,13 @@ const Tienda = ({ carrito, setCarrito, stockTemporal, setStockTemporal }) => {
   };
 
   const obtenerConversion = async (precio, id) => {
-    const res = await axios.get(`http://localhost:3000/api/moneda/${precio}`);
+    const res = await axios.get(`${API_URL}/api/moneda/${precio}`);
     setConversiones(prev => ({ ...prev, [id]: res.data }));
   };
 
   useEffect(() => {
     obtenerCascos();
-  }, [pagina]);
+  }, [pagina]); 
 
   useEffect(() => {
     cascos.forEach(casco => obtenerConversion(casco.precio, casco._id));
@@ -48,7 +50,7 @@ const Tienda = ({ carrito, setCarrito, stockTemporal, setStockTemporal }) => {
   }, [cascos]);
 
   const eliminarCasco = async (id) => {
-    await axios.delete(`http://localhost:3000/api/cascos/${id}`, {
+    await axios.delete(`${API_URL}/api/cascos/${id}`, {
       headers: { authorization: token }
     });
     obtenerCascos();
