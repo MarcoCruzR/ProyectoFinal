@@ -2,6 +2,8 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3000';
+
 const Registro = () => {
   const [form, setForm] = useState({
     nombre: '',
@@ -22,7 +24,7 @@ const Registro = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:3000/api/auth/registrar', form);
+      const res = await axios.post(`${API_URL}/api/auth/registrar`, form);
       setMensaje(res.data.mensaje);
       setError('');
       setTimeout(() => navigate('/'), 2000);

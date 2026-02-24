@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate, useParams } from 'react-router-dom';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3000';
+
 const EditarCasco = ({ setStockTemporal }) => {
   const [form, setForm] = useState({
     nombre: '',
@@ -17,7 +19,7 @@ const EditarCasco = ({ setStockTemporal }) => {
 
   useEffect(() => {
     const obtenerCasco = async () => {
-      const res = await axios.get(`http://localhost:3000/api/cascos/${id}`);
+      const res = await axios.get(`${API_URL}/api/cascos/${id}`);
       setForm(res.data);
     };
     obtenerCasco();
@@ -30,7 +32,7 @@ const EditarCasco = ({ setStockTemporal }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:3000/api/cascos/${id}`, form, {
+      await axios.put(`${API_URL}/api/cascos/${id}`, form, {
         headers: { authorization: token }
       });
       setStockTemporal(prev => {

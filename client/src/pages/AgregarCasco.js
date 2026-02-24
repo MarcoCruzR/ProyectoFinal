@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3000';
+
 const AgregarCasco = () => {
   const [form, setForm] = useState({
     nombre: '',
@@ -21,7 +23,7 @@ const AgregarCasco = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:3000/api/cascos', form, {
+      await axios.post(`${API_URL}/api/cascos`, form, {
         headers: { authorization: token }
       });
       navigate('/tienda');
